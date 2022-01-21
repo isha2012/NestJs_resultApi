@@ -9,10 +9,10 @@ import { ResultsModule } from './results/results.module';
 
 @Module({
   imports: [
-    AuthModule,
+    // AuthModule,
     TeachersModule,
     StudentsModule,
-    CaslModule,
+    // CaslModule,
     ResultsModule,
   ],
   controllers: [AppController],

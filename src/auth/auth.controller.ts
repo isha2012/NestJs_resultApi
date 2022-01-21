@@ -10,7 +10,7 @@ export class AuthController {
   @Post('/login/teacher')
   async loginTeacher(@Body() createTeacherDto: CreateTeacherDto) {
     //console.log(createTeacherDto, 'authcontroller');
-    return await this.authService.loginTeacher(createTeacherDto);
+    return this.authService.loginTeacher(createTeacherDto);
   }
 
   @Post('/login/student')

@@ -45,9 +45,9 @@ export class AuthService {
         username: result.username,
         isTeacher: result.isTeacher,
       };
-      return {
-        access_token: this.jwtService.sign(payload),
-      };
+
+      const access_token = await this.jwtService.sign(payload);
+      return access_token;
     } else {
       throw new UnauthorizedException();
     }
