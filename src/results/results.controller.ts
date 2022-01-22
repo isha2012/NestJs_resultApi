@@ -22,9 +22,9 @@ import { ResultsService } from './results.service';
 export class ResultsConrtoller {
   constructor(private resultService: ResultsService) {}
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards()
   @Post()
-  @UseGuards(PoliciesGuard)
+  @UseGuards(JwtAuthGuard, PoliciesGuard)
   @CheckPolicies((ability: AppAbility) => ability.can(Action.Create, Teacher))
   async createResult(
     @Body() createResultDto: CreateResultDto,
@@ -32,8 +32,10 @@ export class ResultsConrtoller {
     return await this.resultService.createResult(createResultDto);
   }
 
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
+  @UseGuards(JwtAuthGuard, PoliciesGuard)
+  @CheckPolicies((ability: AppAbility) => ability.can(Action.Read, Teacher))
   async findAllResult(): Promise<Result[]> {
     return this.resultService.findAllresult();
   }

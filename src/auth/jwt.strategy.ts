@@ -8,11 +8,11 @@ import { PassportStrategy } from '@nestjs/passport';
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
     super({
-      //jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      jwtFromRequest: (req) => {
-        if (!req || !req.cookies) return null;
-        return req.cookies['access_token'];
-      },
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      // jwtFromRequest: (req) => {
+      //   if (!req || !req.cookies) return null;
+      //   return req.cookies['access_token'];
+      // },
       ignoreExpiration: false,
       secretOrKey: jwtConstants.secret,
     });
