@@ -1,12 +1,12 @@
 import { Connection } from 'mongoose';
-//import { newResultSchema } from './schemas/newResult.Schema';
+import { newResultSchema } from './schemas/newResult.Schema';
 import { ResultSchema } from './schemas/result.schema';
 
-export const resultsProviders = [
+export const newResultsProviders = [
   {
-    provide: 'RESULT_MODEL',
+    provide: 'NEWRESULT_MODEL',
     useFactory: (connection: Connection) =>
-      connection.model('Result', ResultSchema),
+      connection.model('newResult', newResultSchema),
     inject: ['DATABASE_CONNECTION'],
   },
 ];
